@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #ffffff;
+}
+
+h2, p {
+    margin:0;
+    padding: 0;
+
+}
+
+h1 {
+    color: #000000;
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.media-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.media-item img, .media-item video, .media-item audio {
+    max-width: 50%;
+    border-radius: 5px;
+}

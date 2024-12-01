@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Multimedia Gallery</h1>
+    <a style="color: rgb(27, 0, 110)" href="{% url 'upload' %}"
+      >Upload New Media <br
+    /></a>
+
+    <div class="gallery">
+      {% for media in multimedia %}
+      <div class="media-item">
+        <img src="{{ media.media_file.url }}" alt="{{ media.title }}" />
+        <h2>{{ media.title }}</h2>
+        <p>{{ media.description }}</p>
+        {% if media.media_type == 'image' %}
+        <br />
+        {% elif media.media_type == 'video' %}
+        <video controls>
+          <source src="{{ media.media_file.url }}" type="video/mp4" />
+        </video>
+        {% elif media.media_type == 'audio' %}
+        <audio controls>
+          <source src="{{ media.media_file.url }}" type="audio/mpeg" />
+        </audio>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
